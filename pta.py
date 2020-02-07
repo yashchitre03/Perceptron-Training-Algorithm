@@ -47,47 +47,51 @@ plt.show()
 
 
 # from (j)
-
-eta = 1
+eta_list = [1, 10, 0.1]
 w0_prime = np.random.uniform(-1, 1)
 w1_prime = np.random.uniform(-1, 1)
 w2_prime = np.random.uniform(-1, 1)
-W_prime = np.array((w0_prime, w1_prime, w2_prime)).reshape((1, 3))
 print("The weights w0', w1', w2' picked are:")
 print("w0' = {0}\nw1' = {1}\nw2' = {2}\n".format(w0_prime, w1_prime, w2_prime))
 
-epoch = 0
-no_misclassifications = 0
-misclassifications_list = []
-
-while True:
+for eta in eta_list:
+    W_prime = np.array((w0_prime, w1_prime, w2_prime)).reshape((1, 3))
+    print("-----------------------------------------------------------------------")
+    print("For eta:", eta)
+    epoch = 0
     no_misclassifications = 0
-    epoch += 1
-    for row in range(np.shape(S)[0]):
-        if np.dot(np.append(bias, S[row]), W_prime.T) < 0:
-            if S[row] in S0:
-                continue
-            else:
-                no_misclassifications += 1
-                W_prime = W_prime + eta*np.append(bias, S[row])
-        else:
-            if S[row] in S1:
-                continue
-            else:
-                no_misclassifications += 1
-                W_prime = W_prime - eta*np.append(bias, S[row])
-    misclassifications_list.append(no_misclassifications)
-    if no_misclassifications == 0:
-        break
-    else:
-        continue
-print("Total number of epochs:", epoch, "\n")
-print("The final weights are :")
-print("w0 = {0}\nw1 = {1}\nw2 = {2}\n".format(W_prime[0][0], W_prime[0][1], W_prime[0][2]))
-print("Difference between these weights and the optimal weights are:")
-print("w0 difference: {0}\nw1 difference: {1}\nw2 difference: {2}\n".format(W_prime[0][0] - w0, W_prime[0][1] - w1, W_prime[0][2] - w2))
+    misclassifications_list = []
 
-plt.plot(range(epoch), misclassifications_list)
-plt.xlabel("Number of epochs")
-plt.ylabel("Number of misclassifications")
-plt.show()
+    while True:
+        no_misclassifications = 0
+        epoch += 1
+        for row in range(np.shape(S)[0]):
+            if np.dot(np.append(bias, S[row]), W_prime.T) < 0:
+                if S[row] in S0:
+                    continue
+                else:
+                    no_misclassifications += 1
+                    W_prime = W_prime + eta*np.append(bias, S[row])
+            else:
+                if S[row] in S1:
+                    continue
+                else:
+                    no_misclassifications += 1
+                    W_prime = W_prime - eta*np.append(bias, S[row])
+        misclassifications_list.append(no_misclassifications)
+        if no_misclassifications == 0:
+            break
+        else:
+            continue
+    print("Total number of epochs:", epoch, "\n")
+    print("The final weights are :")
+    print("w0 = {0}\nw1 = {1}\nw2 = {2}\n".format(W_prime[0][0], W_prime[0][1], W_prime[0][2]))
+    print("Difference between these weights and the optimal weights are:")
+    print("w0 difference: {0}\nw1 difference: {1}\nw2 difference: {2}\n".format(W_prime[0][0] - w0, W_prime[0][1] - w1, W_prime[0][2] - w2))
+
+    plt.plot(range(epoch), misclassifications_list)
+    plt.xlabel("Number of epochs")
+    plt.ylabel("Number of misclassifications")
+    plt.show()
+
+
