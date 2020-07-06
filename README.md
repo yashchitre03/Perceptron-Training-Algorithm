@@ -1,4 +1,4 @@
-# Perceptron-Training-Algorithm
+# Perceptron Training Algorithm
 
 ### Uses Perceptron training algorithm to classify randomly generated data into two classes.
 
