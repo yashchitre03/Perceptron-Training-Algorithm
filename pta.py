@@ -12,6 +12,7 @@ import matplotlib.pyplot as plt
 
 
 def ideal_w():
+    """   calculates the ideal weights and returns the array   """
     global w0, w1, w2
     w0 = np.random.uniform(-0.25, 0.25)
     w1 = np.random.uniform(-1, 1)
@@ -23,6 +24,7 @@ def ideal_w():
 
 
 def set_S():
+    """   assigning values uniformly at random to the Set S for 100 as well as 1000 inputs   """ 
     S_100 = np.empty((100, 2))
     for row in range(np.shape(S_100)[0]):
         S_100[row] = np.random.uniform(-1, 1, 2)
@@ -42,6 +44,7 @@ def initial_w():
 
 
 def subset_S0_S1(S, W, n):
+    """   creating sub-sets S0 and S1 and plotting the classifier   """   
     print("\n-----------------------------------------------------------------------")
     print("For N =", n)
     global bias, S0, S1
