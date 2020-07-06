@@ -18,17 +18,17 @@
 
 ### The following plots show the results for a randomly generated dataset:
 
-<img src="">
+<img src="https://github.com/yashchitre03/Perceptron-Training-Algorithm/blob/master/fig1.png">
 
 ## Data classifier plot
 
 
 
-----------------------------------------------------------------
+-------------------------------
 
 
 
-<img src="">
+<img src="https://github.com/yashchitre03/Perceptron-Training-Algorithm/blob/master/fig2.png">
 
 ## Number of misclassifications (a)
 
@@ -38,7 +38,7 @@
 
 
 
-<img src="">
+<img src="https://github.com/yashchitre03/Perceptron-Training-Algorithm/blob/master/fig3.png">
 
 ## Number of misclassifications (b)
 
